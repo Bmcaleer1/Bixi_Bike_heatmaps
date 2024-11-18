@@ -1,15 +1,7 @@
-# 1m3oep-ehkeller-bcmcalee
-Evan Keller and Brendan McAleer
+For this project, I collaborated with a partner to develop a program that integrates Bash, C++, and web technologies to provide real-time and historical data about BIXI bike locations in Montreal. The project consists of three main components:
 
-- Any added installations necessary to run the program
-- A summary of your program
-  Our program creates a heat map of Bixi Bike locations in Montreal based on the number of bikes in the station.
-- Which language your program starts in, and which other language(s) it uses
-- How you use each language in the program and why the language is a good choice for that use
-- How the languages are connected (i.e. which one calls which, and where in your code)
-- Any known bugs at time of submission
-- Future work (how you could expand the program with more time)
-- Citations for any code not written by you or the instructor
-- The grade you think you have earned, based on the grading rubric below, with justification
+Bash Script: We wrote a Bash script to periodically pull data from the BIXI bike API, which provides real-time information about bike availability at various docking stations. The script runs at regular intervals and ensures the data is up-to-date.
 
-bricks all day
+C++ Data Processing: Using C++, we processed and sorted the API data to track bike availability at each station over time. The C++ program handled the heavy lifting of analyzing and storing the historical bike data, enabling us to generate accurate statistics for later viewing.
+
+Website and Heatmap: The processed data was then passed to a website, which we designed to display the information in the form of a heatmap. The website allows users to view bike availability across different stations on a dynamic map, with color-coded stations to indicate bike availability (green for 10+ bikes, yellow for 5-10 bikes, and red for fewer than 5 bikes). Additionally, users can interact with the heatmap to explore historical data, selecting different times within the past hour to see the bike availability for those specific moments.
