@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIXI Bike Heatmap</title>
+    <!-- Leaflet lib -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="./style_bixi.css">
+
+
+</head>
+<body>
+<header>
+    <h1>BIXI Bike Availability Heatmap</h1>
+</header>
+<main>
+    <div id="map">
+        <!-- map -->
+    </div>
+    <label for="time">Enter a number 0 - 23 representing the number of hours before the current time</label>
+    <input id="time">
+    <button type="button" onclick="validate()">Submit</button>
+    <p id="message"></p>
+</main>
+<footer>
+    <p>&copy; BIXI Bike Project</p>
+</footer>
+<!-- Leaflet library -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<!-- Leaflet Heat plugin -->
+<script src="./leaflet-heat.js"></script>
+
+<script src="./heatMap.js"></script>
+<script type="module">
+    import { loadMap } from './map.js'
+    let map;
+    window.onload = function() {
+        map = loadMap()
+        window.map = map
+    }
+</script>
+<script type="module">
+    import { loadHeatmap } from "./heatMap.js";
+    function validate() {
+        let x = document.getElementById("time").value;
+        let text;
+        if (isNaN(x) || x % 1 !== 0 || x < 0 || x > 23 || x.contains('.')) {
+            text = "Input not valid";
+        } else {
+            text = "Input OK";
+            loadHeatmap(x);
+        }
+        document.getElementById("message").innerHTML = text;
+    }
+    window.validate = validate;
+</script>
+</body>
+</html>
